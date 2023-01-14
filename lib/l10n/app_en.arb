@@ -8,5 +8,18 @@
   "onboardingSecond": "Use your time smater and free up time in your\nday for something else",
   "onboardingThird": "98% lower water consumption compared to the\nwashing machine. We are the most environmentally\nfriendly car wash",
 
-  "oboardingStartButton": "START NOW"
+  "oboardingStartButton": "START NOW",
+
+  "signUpText": "Sign Up as",
+  "googleButton": "Google",
+  "appleButton": "Apple",
+  "facebookButton": "Facebook",
+  "emailSignUp": "Email Address",
+  "passwordSignUp": "Password",
+  "passwordConfirmSignUp": "Confirm Password",
+  "hintTextEmail": "Enter email address",
+  "hintTextPassword": "Enter password",
+  "signUpButton": "SIGN UP",
+  "guestTextFisrt": "continue as a",
+  "guestTextSecond": " Guest"
 }

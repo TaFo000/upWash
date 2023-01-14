@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:up_wash/pages/OnboardingScreenCarousel.dart';
+import 'package:up_wash/pages/onboardingScreenCarousel.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -40,7 +40,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
             left: 0,
             right: 0,
             child: Container(
-              height: 370,
+              height: MediaQuery.of(context).size.height/2.5,
               decoration: BoxDecoration(
                 color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(23)
@@ -59,6 +59,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               const SizedBox(
                 height: 28,
