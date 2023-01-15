@@ -21,6 +21,12 @@
   "hintTextPassword": "Enter password",
   "signUpButton": "SIGN UP",
   "guestTextFisrt": "continue as a",
-  "guestTextSecond": " Guest"
+  "guestTextSecond": " Guest",
+
+  "emailLogin": "Username",
+  "forgotPassword": "Forgot Password?",
+  "loginButton": "LOGIN",
+  "noAccountFirst": "Don't have a account?",
+  "noAccountSecond": "Signup"
 
 }

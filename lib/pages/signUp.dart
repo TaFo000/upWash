@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 185, 0, 0),
+                    padding: const EdgeInsets.only(top: 185),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
