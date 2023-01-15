@@ -27,5 +27,19 @@
   "forgotPassword": "Forgot Password?",
   "loginButton": "LOGIN",
   "noAccountFirst": "Don't have a account?",
-  "noAccountSecond": "Signup"
+  "noAccountSecond": "Signup",
+
+  "locationText": "Location",
+  "locationTextUnder": "Furfura Darbar, Kollanpur",
+  "searchtext": "Search Services",
+  "offerTitleFirst": "Super",
+  "offerTitleSecond": "Saver Week",
+  "offerDescription": "Flat 40% OFF on all washing\nService",
+  "offerButton": "GRAB OFFER",
+  "specialities": "Specialities",
+  "seeAll": "SEE ALL",
+  "all": "ALL",
+  "interior": "Interior",
+  "wash": "Wash",
+  "topService": "Top Trending Services"
 }
