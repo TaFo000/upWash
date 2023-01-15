@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:up_wash/pages/NavigationBar.dart';
+import 'package:up_wash/pages/signUp.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         body: Stack(
             children: <Widget>[
               Positioned(
-                top: 52,
+                top: 32,
                 left: 126,
                 right:126,
                 child: Image.asset('assets/images/logo.png',
@@ -27,14 +31,14 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  top: 189,
+                  top: 169,
                   child: Image.asset(A.carsWashing)),
               Positioned(
                 bottom: 0,
                 left: 0,
                 right: 0,
                 child: Container(
-                    height: MediaQuery.of(context).size.height/1.8,
+                    height: MediaQuery.of(context).size.height/1.7,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.vertical(top: Radius.circular(23)
@@ -50,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               SafeArea(child: Padding(
-                padding: const EdgeInsets.only(top: 345),
+                padding: const EdgeInsets.only(top: 323),
                 child: Column(children: [
                   Row(children: [
                     Padding(
@@ -124,18 +128,34 @@ class LoginScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
                     child: PrimaryButton(title: AppLocalizations.of(context).loginButton, 
-                        onTap: (){}),
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NavigationBarScreen()));
+                        }),
                   ),
                   SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    Text(AppLocalizations.of(context).noAccountFirst),
-                    SizedBox(width: 5),
-                    Text(AppLocalizations.of(context).noAccountSecond,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpScreen()));
+                    }, child: Text(AppLocalizations.of(context).noAccountFirst,
                     style: TextStyle(
-                      fontWeight: FontWeight.bold
-                    ),)
+                      color: Colors.black
+                    ))),
+                    SizedBox(width: 5),
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpScreen()));
+                    }, child: Text(AppLocalizations.of(context).noAccountSecond,
+                      style: TextStyle(
+                        color: Colors.black,
+                          fontWeight: FontWeight.bold
+                      ),))
                   ],),
                   SizedBox(height: 16),
                   Row(

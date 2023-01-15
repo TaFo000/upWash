@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
+import 'login.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -104,7 +105,11 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 28.0),
                 child: PrimaryButton(
                   title: AppLocalizations.of(context).oboardingStartButton,
-                  onTap: (){}
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  }
                 ),
               ),
               const SizedBox(

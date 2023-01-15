@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:up_wash/pages/NavigationBar.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -305,7 +306,11 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(height: 15),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: PrimaryButton(title: AppLocalizations.of(context).signUpButton, onTap: (){}),
+                          child: PrimaryButton(title: AppLocalizations.of(context).signUpButton, onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => NavigationBarScreen()));
+                          }),
                         ),
                         SizedBox(height: 19),
                         Row(
