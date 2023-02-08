@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:up_wash/pages/home.dart';
+import 'package:up_wash/pages/mapFirst.dart';
 
 
 
@@ -29,7 +30,7 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
               children: [
                 HomeScreen(),
                 HomeScreen(),
-                HomeScreen(),
+                MapFirstScreen(),
                 HomeScreen(),
                 HomeScreen(),
 

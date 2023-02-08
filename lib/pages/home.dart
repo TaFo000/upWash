@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.75,
+            initialChildSize: 0.7,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 decoration: BoxDecoration(
