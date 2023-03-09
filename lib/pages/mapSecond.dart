@@ -23,9 +23,20 @@ class MapSecondScreen extends StatefulWidget {
 
 class MapSecondScreenState extends State<MapSecondScreen> {
 
+  late double lat;
+  late double long;
+  BitmapDescriptor? mark;
+  bool isLoading = true;
+
   bool isNotAdded = true;
   final Completer<GoogleMapController> _controller =
   Completer<GoogleMapController>();
+
+  @override
+  void initState() {
+    super.initState();
+    getPosition();
+  }
 
   void getPosition() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -43,8 +54,15 @@ class MapSecondScreenState extends State<MapSecondScreen> {
 
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    print(position.latitude);
-    print(position.longitude);
+    lat = position.latitude;
+    long = position.longitude;
+
+    mark = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(), 'assets/images/markerIcon.png');
+    isLoading = false;
+    setState(() {
+    });
+
   }
 
 
@@ -57,13 +75,31 @@ class MapSecondScreenState extends State<MapSecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
+      body: isLoading
+        ? Center(child: CircularProgressIndicator()):
+        Stack(children: [
           GoogleMap(
             mapType: MapType.normal,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(lat, long),
+              zoom: 14.4746,
+            ),
+            markers: {
+              Marker(
+                markerId: MarkerId('1'),
+                position: LatLng(lat, long),
+                icon: mark!,
+              ),
+            },
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
+            },
+            onCameraMove: (CameraPosition cumposition){
+              long = cumposition.target.longitude;
+              lat = cumposition.target.latitude;
+              setState(() {
+
+              });
             },
           ),
           isNotAdded ? DraggableScrollableSheet(
@@ -352,7 +388,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
           ),
         ],
 
-      )
+      ),
     );
   }
 

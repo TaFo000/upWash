@@ -271,10 +271,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   backgroundColor: Colors.transparent,
                   context: context,
                   builder: (BuildContext context) {
-                    return DraggableScrollableSheet(
-                      initialChildSize: 1,
-                      builder: (BuildContext context, ScrollController scrollController) {
-                        return Container(
+                    return Container(
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -305,8 +302,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   SizedBox(height: 53,),
                                   Text(AppLocalizations.of(context).payWith,
                                     style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w500
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w500
                                     ),),
                                   SizedBox(height: 23),
                                   Container(
@@ -319,21 +316,24 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                           )
                                         ]
                                     ),
-                                    child: Card(
+                                    child:  Card(
                                       child: ListTile(
                                         leading: ImageIcon(
                                           AssetImage(A.cardPay),
                                           color: Colors.black,
                                         ),
-                                        title: Text(AppLocalizations.of(context).cardPay,
+                                        title: Text(AppLocalizations.of(context).addCard,
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500
                                           ),),
-                                        trailing: isChoosenFirst ? ImageIcon(AssetImage(A.checkIcon),
+                                        trailing: isChoosenFirst ? Icon(Icons.check_circle,
                                           color: Color(0xffFF6600),) : null,
                                         onTap: (){
                                           isChoosenFirst = true;
+                                          isChoosenSecond = false;
+                                          isChoosenThird = false;
+                                          isChoosenFour = false;
                                           setState(() {
 
                                           });
@@ -363,10 +363,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500
                                           ),),
-                                        trailing: isChoosenSecond ? ImageIcon(AssetImage(A.checkIcon),
+                                        trailing: isChoosenSecond ? Icon( Icons.check_circle,
                                           color: Color(0xffFF6600),) : null,
                                         onTap: (){
                                           isChoosenSecond = true;
+                                          isChoosenFirst = false;
+                                          isChoosenThird = false;
+                                          isChoosenFour = false;
                                           setState(() {
 
                                           });
@@ -396,10 +399,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500
                                           ),),
-                                        trailing: isChoosenThird ? ImageIcon(AssetImage(A.checkIcon),
+                                        trailing: isChoosenThird ? Icon( Icons.check_circle,
                                           color: Color(0xffFF6600),) : null,
                                         onTap: (){
                                           isChoosenThird = true;
+                                          isChoosenFirst = false;
+                                          isChoosenSecond = false;
+                                          isChoosenFour = false;
                                           setState(() {
 
                                           });
@@ -429,10 +435,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500
                                           ),),
-                                        trailing: isChoosenFour ? ImageIcon(AssetImage(A.checkIcon),
+                                        trailing: isChoosenFour ? Icon( Icons.check_circle,
                                           color: Color(0xffFF6600),) : null,
                                         onTap: (){
                                           isChoosenFour = true;
+                                          isChoosenFirst = false;
+                                          isChoosenSecond = false;
+                                          isChoosenThird = false;
                                           setState(() {
 
                                           });
@@ -445,14 +454,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => MapSecondScreen()));
-                                  })
+                                  }),
+                                  SizedBox(height: 23,)
                                 ],
                               ),
                             ),
                           ),
                         );
-                      },
-                    );
                   },
                 );
               }),
@@ -463,3 +471,4 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 }
+

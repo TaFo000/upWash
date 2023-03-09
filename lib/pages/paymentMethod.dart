@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:up_wash/pages/mapThird.dart';
+import 'package:up_wash/pages/order.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,7 +30,12 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 22),
               child: Column(children: [
                   Row(children: [
-                    Icon(Icons.arrow_back),
+                    IconButton(icon: Icon(Icons.arrow_back),
+                    onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => OrderScreen()));
+                    },),
                     SizedBox(width: 24,),
                     Text(AppLocalizations.of(context).paymentMethod,
                       style: TextStyle(
@@ -58,10 +65,11 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                         fontSize: 14,
                         fontWeight: FontWeight.w500
                       ),),
-                      trailing: isChoosenFirst ? ImageIcon(AssetImage(A.checkIcon),
+                      trailing: isChoosenFirst ? Icon(Icons.check_circle,
                       color: Color(0xffFF6600),) : null,
                       onTap: (){
                         isChoosenFirst = true;
+                        isChoosenSecond = false;
                         setState(() {
 
                         });
@@ -91,10 +99,11 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                             fontSize: 14,
                             fontWeight: FontWeight.w500
                         ),),
-                      trailing: isChoosenSecond ? ImageIcon(AssetImage(A.checkIcon),
+                      trailing: isChoosenSecond ? Icon(Icons.check_circle,
                         color: Color(0xffFF6600),) : null,
                       onTap: (){
                         isChoosenSecond = true;
+                        isChoosenFirst = false;
                         setState(() {
 
                         });
@@ -103,7 +112,11 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   ),
                 ),
                 SizedBox(height: 490),
-                PrimaryButton(title: AppLocalizations.of(context).pay, onTap: (){})
+                PrimaryButton(title: AppLocalizations.of(context).pay, onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapThirdScreen()));
+                })
               ],),
             ),
           ),
