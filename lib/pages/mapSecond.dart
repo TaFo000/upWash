@@ -104,6 +104,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
           ),
           isNotAdded ? DraggableScrollableSheet(
             initialChildSize: 0.45,
+            maxChildSize: 0.45,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 decoration: BoxDecoration(
@@ -317,6 +318,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
           ) :
           DraggableScrollableSheet(
             initialChildSize: 0.25,
+            maxChildSize: 0.25,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 decoration: BoxDecoration(

@@ -102,5 +102,14 @@
 
   "googlePay" : "Google Pay",
   "mobilePay" :"Mobile Pay",
-  "cardPay": "Card Payment"
+  "cardPay": "Card Payment",
+
+  "editProfile": "EDIT PROFILE",
+  "campaign": "Campaign",
+  "myOrders": "My Orders",
+  "addresses": "Addresses & Cars",
+  "forCompanies": "For companies",
+  "support": "Support",
+  "aboutUs": "About Us",
+  "sideMenuButton": "Become a washing maestro"
 }

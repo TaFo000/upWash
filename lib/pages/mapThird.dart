@@ -334,6 +334,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
             ) :
            DraggableScrollableSheet(
              initialChildSize: 0.45,
+             maxChildSize: 0.5,
              builder: (BuildContext context, ScrollController scrollController) {
                return Container(
                  decoration: BoxDecoration(

@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:up_wash/provider.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
         backgroundColor: Color(0xffFF6600),
         body: Stack(children: <Widget>[
           Positioned(
@@ -23,12 +32,15 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      Icons.menu,
-                      color: Colors.white,
+                    IconButton(
+                      icon: Icon(Icons.menu,
+                      color: Colors.white,),
+                      onPressed: (){
+                        context.read<AppProvider>().myKey.currentState!.openDrawer();
+                        },
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 9),
                       child: Image.asset(A.locationLogo),
                     ),
                     Padding(

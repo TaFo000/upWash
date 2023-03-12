@@ -65,7 +65,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
     long = position.longitude;
 
     mark = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(), 'assets/images/markerIcon.png');
+        ImageConfiguration(size: Size(42, 44)), 'assets/images/markerIcon.png');
     isLoading = false;
     setState(() {});
   }
@@ -217,6 +217,20 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                   Row(
                                     children: [
                                       PopupMenuButton<SampleItem>(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffF6F6F6),
+                                            borderRadius: BorderRadius.circular(5)
+                                          ),
+                                          width: 76,
+                                          height: 57,
+                                          child: Row(children: [
+                                            SizedBox(width: 6),
+                                            Image.asset(A.indiaIcon),
+                                            SizedBox(width: 5),
+                                            Icon(Icons.arrow_drop_down)
+                                          ],),
+                                        ),
                                         initialValue: selectedMenu,
                                         // Callback that sets the selected popup menu item.
                                         onSelected: (SampleItem item) {
@@ -225,17 +239,23 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                           });
                                         },
                                         itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
-                                          const PopupMenuItem<SampleItem>(
+                                           PopupMenuItem<SampleItem>(
                                             value: SampleItem.itemOne,
-                                            child: Image(image: AssetImage(A.indiaIcon), width: 76,),
+                                            child: Container(
+                                              width: 56,
+                                                child: Image(image: AssetImage(A.indiaIcon))),
                                           ),
-                                          const PopupMenuItem<SampleItem>(
+                                           PopupMenuItem<SampleItem>(
                                             value: SampleItem.itemTwo,
-                                            child:  Image(image: AssetImage(A.indiaIcon)),
+                                            child:  Container(
+                                                width: 56,
+                                                child: Image(image: AssetImage(A.indiaIcon))),
                                           ),
-                                          const PopupMenuItem<SampleItem>(
+                                           PopupMenuItem<SampleItem>(
                                             value: SampleItem.itemThree,
-                                            child:  Image(image: AssetImage(A.indiaIcon)),
+                                            child:  Container(
+                                                width: 56,
+                                                child: Image(image: AssetImage(A.indiaIcon))),
                                           ),
                                         ],
                                       ),
