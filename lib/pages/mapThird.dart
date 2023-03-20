@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -77,6 +78,192 @@ class MapThirdScreenState extends State<MapThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Container(
+          width: 250,
+          child: Drawer(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white
+              ),
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  SizedBox(
+                    height: 250,
+                    child: DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage(A.avatarWoman),
+                            radius: 45,
+                          ),
+                          SizedBox(height: 20),
+                          Text("Salini Detroja",
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500
+                            ),),
+                          SizedBox(height: 10),
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius.circular(
+                                    4),
+                                color: Colors.white),
+                            height: 25,
+                            width: 100,
+                            child: Material(
+                              color: Color(0xffF6F6F6),
+                              child: InkWell(
+                                borderRadius:
+                                BorderRadius.circular(
+                                    4),
+                                onTap: () {},
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      ImageIcon(AssetImage(A.editIcon),
+                                          color: Color(0xffFF6600)),
+                                      Text(
+                                        AppLocalizations.of(
+                                            context).editProfile,
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight:
+                                            FontWeight
+                                                .w500,
+                                            color: Color(
+                                                0xffFF6600)),
+                                      ),
+                                      SizedBox(width: 9,)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/paymentIcon.svg'),
+                    title: Text(AppLocalizations.of(context).paymentMethod,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/campaignIcon.svg'),
+                    title: Text(AppLocalizations.of(context).campaign,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/ordersIcon.svg'),
+                    title: Text(AppLocalizations.of(context).myOrders,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/addressesIcon.svg'),
+                    title: Text(AppLocalizations.of(context).addresses,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/forCompaniesIcon.svg'),
+                    title: Text(AppLocalizations.of(context).forCompanies,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/supportIcon.svg'),
+                    title: Text(AppLocalizations.of(context).support,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/aboutIcon.svg'),
+                    title: Text(AppLocalizations.of(context).aboutUs,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  SizedBox(height: 133),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 21),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(
+                              4),
+                          color: Color(0xffFF6600)),
+                      height: 38,
+                      width: 212,
+                      child: Material(
+                        color: Color(0xffFF6600),
+                        child: InkWell(
+                          borderRadius:
+                          BorderRadius.circular(
+                              4),
+                          onTap: () {},
+                          child: Center(
+                              child: Text(
+                                AppLocalizations.of(
+                                    context).sideMenuButton,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight:
+                                    FontWeight
+                                        .w700,
+                                    color: Colors.white),
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         body: isLoading
             ? Center(child: CircularProgressIndicator())
             :Stack(
@@ -110,10 +297,12 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                padding: const EdgeInsets.fromLTRB(28, 5, 0, 0),
                child: Row(
                  children: [
-                   Icon(
-                     Icons.menu,
-                     color: Colors.black,
-                   ),
+                   Builder(builder: (context) => // Ensure Scaffold is in context
+                   IconButton(
+                       icon: Icon(Icons.menu,
+                         color: Colors.black,),
+                       onPressed: () => Scaffold.of(context).openDrawer()
+                   )),
                    SizedBox(width: 15),
                    SizedBox(
                      width: 295,

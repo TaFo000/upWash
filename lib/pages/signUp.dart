@@ -8,9 +8,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
 
   SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+
+  bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +264,23 @@ class SignUpScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: TextField(
+                            obscureText: passwordVisible,
                             decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    // Based on passwordVisible state choose the icon
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.grey,
+                                  ),
+                                  onPressed: () {
+                                    // Update the state i.e. toogle the state of passwordVisible variable
+                                    setState(() {
+                                      passwordVisible = !passwordVisible;
+                                    });
+                                  },
+                                ),
                                 filled: true,
                                 fillColor: Color(0xffF6F6F6),
                                 border:  OutlineInputBorder(
@@ -289,7 +313,23 @@ class SignUpScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: TextField(
+                            obscureText: passwordVisible,
                             decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    // Based on passwordVisible state choose the icon
+                                    passwordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.grey,
+                                  ),
+                                  onPressed: () {
+                                    // Update the state i.e. toogle the state of passwordVisible variable
+                                    setState(() {
+                                      passwordVisible = !passwordVisible;
+                                    });
+                                  },
+                                ),
                                 filled: true,
                                 fillColor: Color(0xffF6F6F6),
                                 border:  OutlineInputBorder(

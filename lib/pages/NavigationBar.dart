@@ -273,7 +273,9 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
 
                             });
                           },
-                          child: SvgPicture.asset('assets/images/home.svg', color: index == 2? Color(0xffFF6600): Colors.grey)),
+                          child: SvgPicture.asset('assets/images/homeIcon.svg',
+                              allowDrawingOutsideViewBox: true,
+                              color: index == 2? Color(0xffFF6600): Colors.grey),),
                       GestureDetector(
                           onTap: (){
                             index = 3;

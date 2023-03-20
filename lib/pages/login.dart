@@ -11,9 +11,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+
+
 
   LoginScreen({Key? key}) : super(key: key);
+
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  bool passwordVisible = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +119,23 @@ class LoginScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: TextField(
+                      obscureText: passwordVisible,
                       decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              // Based on passwordVisible state choose the icon
+                              passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              // Update the state i.e. toogle the state of passwordVisible variable
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                          ),
                           filled: true,
                           fillColor: Color(0xffF6F6F6),
                           border:  OutlineInputBorder(
@@ -127,7 +155,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
-                    child: PrimaryButton(title: AppLocalizations.of(context).loginButton, 
+                    child: PrimaryButton(title: AppLocalizations.of(context).loginButton,
                         onTap: (){
                           Navigator.push(
                               context,
@@ -286,7 +314,7 @@ class LoginScreen extends StatelessWidget {
 
                 ],),
               ))
-              
+
             ]
         )
     );
