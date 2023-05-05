@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:up_wash/pages/home.dart';
 import 'package:up_wash/pages/mapFirst.dart';
+import 'package:up_wash/pages/settings.dart';
 import 'package:up_wash/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../common_setup/Assets.dart';
+import '../upWashColors.dart';
 
 
 
@@ -34,6 +36,7 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
       key: context.watch<AppProvider>().myKey,
         drawer: Container(
@@ -41,7 +44,7 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
           child: Drawer(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white
+                color: upwashColors.backgroundColor
               ),
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -49,7 +52,7 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
                   SizedBox(
                     height: 250,
                     child: DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: BoxDecoration(color: upwashColors.backgroundColor),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -183,7 +186,22 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  SizedBox(height: 133),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/settingsIcon.svg'),
+                    title: Text(AppLocalizations.of(context).settings,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SettingsScreen()));
+                    },
+                  ),
+                  SizedBox(height: 90),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
                     child: Container(
@@ -273,7 +291,7 @@ class NavigationBarScreenState extends State<NavigationBarScreen> {
 
                             });
                           },
-                          child: SvgPicture.asset('assets/images/homeIcon.svg',
+                          child: SvgPicture.asset('assets/images/homeIconNew.svg',
                               allowDrawingOutsideViewBox: true,
                               color: index == 2? Color(0xffFF6600): Colors.grey),),
                       GestureDetector(

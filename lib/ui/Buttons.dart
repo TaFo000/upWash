@@ -1,9 +1,13 @@
+
 import 'package:flutter/material.dart';
+
+import '../upWashColors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String title;
   final bool enabled;
   final VoidCallback onTap;
+
 
   const PrimaryButton(
       {Key? key,
@@ -14,13 +18,12 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Container(
       height: 54,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: (enabled)
-              ? Color(0xffFF6600)
-              : Color(0xffFF6600)),
+          color: upwashColors.primaryOrange),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

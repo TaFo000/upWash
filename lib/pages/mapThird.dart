@@ -5,10 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:up_wash/pages/settings.dart';
 import 'package:up_wash/ui/Buttons.dart';
 
 
 import '../../common_setup/Assets.dart';
+import '../upWashColors.dart';
 
 
 class MapThirdScreen extends StatefulWidget {
@@ -77,13 +79,14 @@ class MapThirdScreenState extends State<MapThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
         drawer: Container(
           width: 250,
           child: Drawer(
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white
+                  color: upwashColors.backgroundColor
               ),
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -91,7 +94,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                   SizedBox(
                     height: 250,
                     child: DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: BoxDecoration(color: upwashColors.backgroundColor),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -225,7 +228,22 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  SizedBox(height: 133),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/settingsIcon.svg'),
+                    title: Text(AppLocalizations.of(context).settings,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SettingsScreen()));
+                    },
+                  ),
+                  SizedBox(height: 90),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
                     child: Container(
@@ -347,7 +365,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                           color: Color(0xffD9D9D9))
                     ],
                     borderRadius: BorderRadius.circular(30),
-                    color: Colors.white,
+                    color: upwashColors.backgroundColor,
                   ),
                   child: ListView.builder(
                     controller: scrollController,
@@ -382,6 +400,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                     color: Colors.black,
                                   ),
                                   hintText: AppLocalizations.of(context).yourLocation,
+                                  hintStyle: TextStyle(color: Colors.black),
                                   suffixIcon: ImageIcon(AssetImage(A.cancelIcon),
                                   color: Colors.black,)
                                 ),
@@ -389,6 +408,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                               SizedBox(height: 16),
                               SizedBox(
                                 child: Card(
+                                  color: Colors.white,
                                   child: ListTile(
                                     leading: ImageIcon(AssetImage(A.locationIcon),
                                     color: Colors.black,),
@@ -419,6 +439,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                               SizedBox(height: 9),
                               SizedBox(
                                 child: Card(
+                                  color: Colors.white,
                                   child: ListTile(
                                     leading: ImageIcon(AssetImage(A.locationIcon),
                                       color: Colors.black,),
@@ -443,6 +464,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                               SizedBox(height: 9),
                               SizedBox(
                                 child: Card(
+                                  color: Colors.white,
                                   child: ListTile(
                                     leading: ImageIcon(AssetImage(A.locationIcon),
                                       color: Colors.black,),
@@ -467,6 +489,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                               SizedBox(height: 9),
                               SizedBox(
                                 child: Card(
+                                  color: Colors.white,
                                   child: ListTile(
                                     leading: ImageIcon(AssetImage(A.locationIcon),
                                       color: Colors.black,),
@@ -491,6 +514,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                               SizedBox(height: 9),
                               SizedBox(
                                 child: Card(
+                                  color: Colors.white,
                                   child: ListTile(
                                     leading: ImageIcon(AssetImage(A.locationIcon),
                                       color: Colors.black,),
@@ -534,7 +558,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                          color: Color(0xffD9D9D9))
                    ],
                    borderRadius: BorderRadius.circular(30),
-                   color: Colors.white,
+                   color: upwashColors.backgroundColor,
                  ),
                  child: ListView.builder(
                    controller: scrollController,
@@ -563,7 +587,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                      height: 38,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(5),
-                                         color: Color(0xffFF6600)),
+                                         color: upwashColors.primaryOrange),
                                      child: Material(
                                        color: Colors.transparent,
                                        child: InkWell(
@@ -587,7 +611,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                      height: 38,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(5),
-                                         color: Color(0xffFF6600)),
+                                         color: upwashColors.primaryOrange),
                                      child: Material(
                                        color: Colors.transparent,
                                        child: InkWell(
@@ -611,7 +635,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                      height: 38,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(5),
-                                         color: Color(0xffFF6600)),
+                                         color: upwashColors.primaryOrange),
                                      child: Material(
                                        color: Colors.transparent,
                                        child: InkWell(
@@ -635,7 +659,7 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                      height: 38,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(5),
-                                         color: Color(0xffFF6600)),
+                                         color: upwashColors.primaryOrange),
                                      child: Material(
                                        color: Colors.transparent,
                                        child: InkWell(
@@ -675,7 +699,8 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                        Text(AppLocalizations.of(context).tireChanges,
                                          style: TextStyle(
                                              fontSize: 16,
-                                             fontWeight: FontWeight.w500
+                                             fontWeight: FontWeight.w500,
+                                           color: Colors.black
                                          ),),
                                        SizedBox(height: 3,),
                                        Text("\$39",
@@ -730,7 +755,8 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                        Text(AppLocalizations.of(context).outsidePro,
                                          style: TextStyle(
                                              fontSize: 16,
-                                             fontWeight: FontWeight.w500
+                                             fontWeight: FontWeight.w500,
+                                           color: Colors.black
                                          ),),
                                        SizedBox(height: 3,),
                                        Text("\$39",
@@ -785,7 +811,8 @@ class MapThirdScreenState extends State<MapThirdScreen> {
                                        Text(AppLocalizations.of(context).outsideProCoating,
                                          style: TextStyle(
                                              fontSize: 16,
-                                             fontWeight: FontWeight.w500
+                                             fontWeight: FontWeight.w500,
+                                           color: Colors.black
                                          ),),
                                        SizedBox(height: 3,),
                                        Text("\$39",

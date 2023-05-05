@@ -111,5 +111,14 @@
   "forCompanies": "For companies",
   "support": "Support",
   "aboutUs": "About Us",
-  "sideMenuButton": "Become a washing maestro"
+  "sideMenuButton": "Become a washing maestro",
+  "settings": "Settings",
+
+  "premium": "Become a premium →",
+  "theme": "System color",
+  "changePassword": "Change password",
+  "changeIcon": "Change app icon",
+  "termsOfUse": "Terms of use",
+  "privacyPolicy": "Privacy policy",
+  "language": "Change language"
 }

@@ -10,10 +10,12 @@ import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:up_wash/pages/Checkout.dart';
+import 'package:up_wash/pages/settings.dart';
 import 'package:up_wash/ui/Buttons.dart';
 
 import '../../common_setup/Assets.dart';
 import '../provider.dart';
+import '../upWashColors.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
 
@@ -89,6 +91,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
         key: _key,
         drawer: Container(
@@ -96,7 +99,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
           child: Drawer(
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white
+                  color: upwashColors.backgroundColor
               ),
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -104,7 +107,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                   SizedBox(
                     height: 250,
                     child: DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: BoxDecoration(color: upwashColors.backgroundColor),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -238,7 +241,22 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  SizedBox(height: 133),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/settingsIcon.svg'),
+                    title: Text(AppLocalizations.of(context).settings,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SettingsScreen()));
+                    },
+                  ),
+                  SizedBox(height: 90),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
                     child: Container(
@@ -363,7 +381,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                   color: Color(0xffD9D9D9))
                             ],
                             borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
+                            color: upwashColors.backgroundColor,
                           ),
                           child: SingleChildScrollView(
                             controller: scrollController,
@@ -399,6 +417,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                       ),
                                       hintText:
                                           AppLocalizations.of(context).date,
+                                      hintStyle: TextStyle(color: Colors.black)
                                     ),
                                       inputFormatters: [maskFormatterDate]
                                   ),
@@ -420,6 +439,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                       ),
                                       hintText:
                                           AppLocalizations.of(context).time,
+                                      hintStyle: TextStyle(color: Colors.black)
                                     ),
                                       inputFormatters: [maskFormatterTime]
                                   ),
@@ -438,7 +458,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                             SizedBox(width: 6),
                                             Image.asset(A.indiaIcon),
                                             SizedBox(width: 5),
-                                            Icon(Icons.arrow_drop_down)
+                                            Icon(Icons.arrow_drop_down, color: Colors.black,)
                                           ],),
                                         ),
                                         initialValue: selectedMenu,
@@ -484,6 +504,7 @@ class MapFirstScreenState extends State<MapFirstScreen> {
                                               ),
                                             ),
                                             hintText: '123NRO',
+                                            hintStyle: TextStyle(color: Colors.black)
                                           ),
                                         ),
                                         width: 245,

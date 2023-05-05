@@ -10,6 +10,7 @@ import 'package:up_wash/ui/Buttons.dart';
 
 
 import '../../common_setup/Assets.dart';
+import '../upWashColors.dart';
 
 
 class MapSecondScreen extends StatefulWidget {
@@ -75,6 +76,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
       body: isLoading
         ? Center(child: CircularProgressIndicator()):
@@ -116,7 +118,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                         color: Color(0xffD9D9D9))
                   ],
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.white,
+                  color: upwashColors.backgroundColor,
                 ),
                 child: ListView.builder(
                   controller: scrollController,
@@ -153,7 +155,8 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                                   Text(AppLocalizations.of(context).tireShine,
                                   style: TextStyle(
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w500
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black
                                   ),),
                                   SizedBox(height: 3,),
                                   Text("\$39",
@@ -211,7 +214,8 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                                       Text(AppLocalizations.of(context).ligthWaxing,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w500
+                                            fontWeight: FontWeight.w500,
+                                          color: Colors.black
                                         ),),
                                       SizedBox(height: 3,),
                                       Text("\$39",
@@ -269,7 +273,8 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                                       Text(AppLocalizations.of(context).washingDoor,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w500
+                                            fontWeight: FontWeight.w500,
+                                          color: Colors.black
                                         ),),
                                       SizedBox(height: 3,),
                                       Text("\$88",
@@ -330,7 +335,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                         color: Color(0xffD9D9D9))
                   ],
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.white,
+                  color: upwashColors.backgroundColor,
                 ),
                 child: ListView.builder(
                   controller: scrollController,
@@ -365,6 +370,7 @@ class MapSecondScreenState extends State<MapSecondScreen> {
                                   color: Colors.black,
                                 ),
                                 hintText: AppLocalizations.of(context).yourLocation,
+                                hintStyle: TextStyle(color: Colors.black),
                                 suffixIcon:
                                 ImageIcon(
                                   AssetImage(A.cancelIcon),

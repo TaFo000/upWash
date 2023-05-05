@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
+import '../upWashColors.dart';
 import 'login.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -32,8 +33,10 @@ class OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
 
     return Scaffold(
+      backgroundColor: upwashColors.backgroundColor,
       body: Stack(
         children: <Widget>[
           Positioned(
@@ -43,7 +46,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
             child: Container(
               height: MediaQuery.of(context).size.height/2.5,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: upwashColors.backgroundColor,
               borderRadius: BorderRadius.vertical(top: Radius.circular(23)
               ),
                   boxShadow: [
@@ -89,7 +92,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                 position: _currentPagePosition,
                 decorator: DotsDecorator(
                   color: Color(0xffFF6600).withOpacity(0.3),
-                  activeColor: Color(0xffFF6600),
+                  activeColor: upwashColors.primaryOrange,
                   spacing: const EdgeInsets.all(6.0),
                   size: const Size.square(10.0),
                   activeSize: const Size(32.0, 10.0),

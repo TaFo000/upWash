@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
+import '../upWashColors.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   PaymentMethodScreen({Key? key}) : super(key: key);
@@ -23,7 +24,9 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
+      backgroundColor: upwashColors.backgroundColor,
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -55,6 +58,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                     ]
                   ),
                   child: Card(
+                    color: Colors.white,
                     child: ListTile(
                       leading: ImageIcon(
                         AssetImage(A.applePay),
@@ -63,7 +67,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                       title: Text(AppLocalizations.of(context).applePay,
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.w500
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black
                       ),),
                       trailing: isChoosenFirst ? Icon(Icons.check_circle,
                       color: Color(0xffFF6600),) : null,
@@ -89,6 +94,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                       ]
                   ),
                   child: Card(
+                    color: Colors.white,
                     child: ListTile(
                       leading: ImageIcon(
                         AssetImage(A.cardPay),
@@ -97,7 +103,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                       title: Text(AppLocalizations.of(context).addCard,
                         style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w500
+                            fontWeight: FontWeight.w500,
+                          color: Colors.black
                         ),),
                       trailing: isChoosenSecond ? Icon(Icons.check_circle,
                         color: Color(0xffFF6600),) : null,

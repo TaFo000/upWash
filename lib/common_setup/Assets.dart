@@ -56,6 +56,9 @@ class A {
   static const String mobilePay = "assets/images/mobilePay.png";
 
   static const String editIcon = "assets/images/editIcon.png";
+  static const String cancelIconSettings = "assets/images/cancelIconSettings.png";
+  static const String premium = "assets/images/premium.png";
+
 
 
 

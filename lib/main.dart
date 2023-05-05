@@ -1,42 +1,86 @@
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
-import 'package:up_wash/pages/checkout.dart';
-import 'package:up_wash/pages/NavigationBar.dart';
-import 'package:up_wash/pages/home.dart';
-import 'package:up_wash/pages/login.dart';
-import 'package:up_wash/pages/mapSecond.dart';
-import 'package:up_wash/pages/mapFirst.dart';
-import 'package:up_wash/pages/mapThird.dart';
 import 'package:up_wash/pages/onboardingScreen.dart';
-import 'package:up_wash/pages/order.dart';
-import 'package:up_wash/pages/paymentMethod.dart';
-import 'package:up_wash/pages/signUp.dart';
 import 'package:up_wash/provider.dart';
+import 'package:up_wash/upWashColors.dart';
+import 'dart:io' show Platform;
 
-void main() {
+Future<void> main() async {
+
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => AppProvider()),
     ],
     child: MyApp(),
-  )
-  );
-
+  ));
 }
 
 class MyApp extends StatelessWidget {
-
   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //theme: ThemeData(fontFamily: 'GT Walsheim Pro'),
 
-      theme: ThemeData(fontFamily: 'GT Walsheim Pro'),
-
+      theme: context.watch<AppProvider>().themeIsDark
+          ? ThemeData.light()
+              .copyWith(extensions: <ThemeExtension<UpWashColors>>[
+              UpWashColors(
+                primaryOrange: Color(0xffFF6600),
+                textColor: Color(0xff000000),
+                iconButtonColor: Color(0xffFFFFFF),
+                homePageDraggableSheet: Color(0xffFFFFFF),
+                backgroundColor: Color(0xffFFFFFF),
+                shadowColor: Color(0xffEDEDED),
+                homeBackgroundColor: Color(0xffFF6600)
+              )
+            ])
+          : ThemeData.dark()
+              .copyWith(extensions: <ThemeExtension<UpWashColors>>[
+              UpWashColors(
+                primaryOrange: Color(0xffFF6600).withOpacity(0.8),
+                textColor: Color(0xffFFFFFF),
+                iconButtonColor: Color(0xffFF6600).withOpacity(0.2),
+                homePageDraggableSheet: Color(0xffFFFFFF).withOpacity(0.2),
+                backgroundColor: Color(0xff292D32),
+                shadowColor: Color(0xffEDEDED),
+                homeBackgroundColor: Color(0xff292D32)
+              )
+            ]),
+      darkTheme:
+      context.watch<AppProvider>().themeIsDark
+          ? ThemeData.light()
+          .copyWith(extensions: <ThemeExtension<UpWashColors>>[
+        UpWashColors(
+          primaryOrange: Color(0xffFF6600),
+          textColor: Color(0xff000000),
+          iconButtonColor: Color(0xffFFFFFF),
+          homePageDraggableSheet: Color(0xffFFFFFF),
+          backgroundColor: Color(0xffFFFFFF),
+          shadowColor: Color(0xffEDEDED),
+            homeBackgroundColor: Color(0xffFF6600)
+        )
+      ])
+          : ThemeData.dark()
+          .copyWith(extensions: <ThemeExtension<UpWashColors>>[
+        UpWashColors(
+          primaryOrange: Color(0xffFF6600).withOpacity(0.8),
+          textColor: Color(0xffFFFFFF),
+          iconButtonColor: Color(0xffFF6600).withOpacity(0.2),
+          homePageDraggableSheet: Color(0xffFFFFFF).withOpacity(0.2),
+          backgroundColor: Color(0xff292D32),
+          shadowColor: Color(0xffEDEDED),
+            homeBackgroundColor: Color(0xff292D32)
+        )
+      ]),
       routes: {
         '/onboarding': (context) => OnboardingScreen(),
         '/main': (context) => MyHomePage()
@@ -60,16 +104,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -79,11 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -106,21 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(

@@ -4,12 +4,14 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:up_wash/pages/paymentMethod.dart';
+import 'package:up_wash/pages/settings.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
+import '../upWashColors.dart';
 
 class OrderScreen extends StatelessWidget {
   OrderScreen({Key? key}) : super(key: key);
@@ -25,13 +27,15 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
+      backgroundColor: upwashColors.backgroundColor,
         drawer: Container(
           width: 250,
           child: Drawer(
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white
+                  color: upwashColors.backgroundColor
               ),
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -39,7 +43,7 @@ class OrderScreen extends StatelessWidget {
                   SizedBox(
                     height: 250,
                     child: DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: BoxDecoration(color: upwashColors.backgroundColor),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -173,7 +177,22 @@ class OrderScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                   ),
-                  SizedBox(height: 133),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/images/settingsIcon.svg'),
+                    title: Text(AppLocalizations.of(context).settings,
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500
+                      ),),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SettingsScreen()));
+                    },
+                  ),
+                  SizedBox(height: 90),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 21),
                     child: Container(
@@ -225,7 +244,7 @@ class OrderScreen extends StatelessWidget {
                       Builder(builder: (context) => // Ensure Scaffold is in context
                       IconButton(
                           icon: Icon(Icons.menu,
-                            color: Colors.black,),
+                            color: upwashColors.textColor,),
                           onPressed: () => Scaffold.of(context).openDrawer()
                       )),
                       SizedBox(width: 19),
@@ -253,7 +272,8 @@ class OrderScreen extends StatelessWidget {
                             style: BorderStyle.none,
                           ),
                         ),
-                        hintText: AppLocalizations.of(context).name
+                        hintText: AppLocalizations.of(context).name,
+                      hintStyle: TextStyle(color: Colors.black)
                     ),
                   ),
                   SizedBox(height: 10),
@@ -268,7 +288,8 @@ class OrderScreen extends StatelessWidget {
                             style: BorderStyle.none,
                           ),
                         ),
-                        hintText: AppLocalizations.of(context).email
+                        hintText: AppLocalizations.of(context).email,
+                      hintStyle: TextStyle(color: Colors.black)
                     ),
                   ),
                   SizedBox(height: 10),
@@ -284,6 +305,7 @@ class OrderScreen extends StatelessWidget {
                           ),
                         ),
                         hintText: AppLocalizations.of(context).telephone,
+                      hintStyle: TextStyle(color: Colors.black)
 
                     ),
                       inputFormatters: [maskFormatter]
@@ -373,13 +395,14 @@ class OrderScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                       hintText: AppLocalizations.of(context).yourLocation,
+                      hintStyle: TextStyle(color: Colors.black)
                     ),
                   ),
                   SizedBox(height: 22),
                   Container(
                     height: 255,
                     decoration: BoxDecoration(
-                      color: Color(0xffFF6600),
+                      color: upwashColors.primaryOrange,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -529,6 +552,8 @@ class OrderScreen extends StatelessWidget {
                       expands: true,
                       keyboardType: TextInputType.multiline,
                       decoration: InputDecoration(filled: true, hintText: AppLocalizations.of(context).note,
+                        hintStyle: TextStyle(color: Colors.black),
+                        fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: BorderSide(
@@ -544,6 +569,7 @@ class OrderScreen extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.w500
                     ),),
+                  SizedBox(height: 12),
                   Container(
                     height: 57,
                     child: TextField(
@@ -557,7 +583,8 @@ class OrderScreen extends StatelessWidget {
                               style: BorderStyle.none,
                             ),
                           ),
-                          hintText: AppLocalizations.of(context).couponCode
+                          hintText: AppLocalizations.of(context).couponCode,
+                        hintStyle: TextStyle(color: Colors.black)
                       ),
                     ),
                   ),
@@ -567,7 +594,7 @@ class OrderScreen extends StatelessWidget {
                     height: 51,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Color(0xffFF6600)),
+                        color: upwashColors.primaryOrange),
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../upWashColors.dart';
+
 class OnboardingScreenCarousel extends StatelessWidget {
   final String title;
   final String text;
@@ -13,6 +15,8 @@ class OnboardingScreenCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
@@ -36,13 +40,13 @@ class OnboardingScreenCarousel extends StatelessWidget {
           Text(title,
                 maxLines: 2,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w700)),
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w700, color: upwashColors.textColor)),
           const SizedBox(
             height: 25,
           ), Text(
               text,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: upwashColors.textColor),
             ),
         ],
       ),

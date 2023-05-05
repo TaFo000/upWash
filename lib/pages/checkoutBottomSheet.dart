@@ -5,6 +5,7 @@ import '../common_setup/Assets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../ui/Buttons.dart';
+import '../upWashColors.dart';
 import 'mapSecond.dart';
 
 class CheckoutBottomSheet extends StatefulWidget {
@@ -24,6 +25,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     // TODO: implement build
     return Container(
       decoration: BoxDecoration(
@@ -34,7 +36,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
               color: Color(0xffD9D9D9))
         ],
         borderRadius: BorderRadius.circular(30),
-        color: Colors.white,
+        color: upwashColors.backgroundColor,
       ),
       child: SingleChildScrollView(
         child: Padding(
@@ -71,6 +73,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     ]
                 ),
                 child:  Card(
+                  color: Colors.white,
                   child: ListTile(
                     leading: ImageIcon(
                       AssetImage(A.cardPay),
@@ -79,7 +82,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     title: Text(AppLocalizations.of(context).addCard,
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
+                        color: Colors.black
                       ),),
                     trailing: isChoosenFirst ? Icon(Icons.check_circle,
                       color: Color(0xffFF6600),) : null,
@@ -107,6 +111,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     ]
                 ),
                 child: Card(
+                  color: Colors.white,
                   child: ListTile(
                     leading: ImageIcon(
                       AssetImage(A.applePay),
@@ -115,7 +120,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     title: Text(AppLocalizations.of(context).applePay,
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
+                        color: Colors.black
                       ),),
                     trailing: isChoosenSecond ? Icon( Icons.check_circle,
                       color: Color(0xffFF6600),) : null,
@@ -143,6 +149,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     ]
                 ),
                 child: Card(
+                  color: Colors.white,
                   child: ListTile(
                     leading: ImageIcon(
                       AssetImage(A.googlePay),
@@ -151,7 +158,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     title: Text(AppLocalizations.of(context).googlePay,
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
+                        color: Colors.black
                       ),),
                     trailing: isChoosenThird ? Icon( Icons.check_circle,
                       color: Color(0xffFF6600),) : null,
@@ -179,6 +187,7 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     ]
                 ),
                 child: Card(
+                  color: Colors.white,
                   child: ListTile(
                     leading: ImageIcon(
                       AssetImage(A.mobilePay),
@@ -187,7 +196,8 @@ class _CheckoutBottomSheetState extends State<CheckoutBottomSheet> {
                     title: Text(AppLocalizations.of(context).mobilePay,
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
+                        color: Colors.black
                       ),),
                     trailing: isChoosenFour ? Icon( Icons.check_circle,
                       color: Color(0xffFF6600),) : null,

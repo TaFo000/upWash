@@ -5,13 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'package:up_wash/pages/checkoutBottomSheet.dart';
 import 'package:up_wash/pages/mapSecond.dart';
+import 'package:up_wash/provider.dart';
 import 'package:up_wash/ui/Buttons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common_setup/Assets.dart';
 import '../../common_setup/Routes.dart';
+import '../upWashColors.dart';
 
 class CheckoutScreen extends StatefulWidget {
   CheckoutScreen({Key? key}) : super(key: key);
@@ -38,13 +41,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final UpWashColors upwashColors = Theme.of(context).extension<UpWashColors>()!;
     return Scaffold(
+      backgroundColor:  upwashColors.backgroundColor,
         drawer: Container(
           width: 250,
           child: Drawer(
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white
+                  color: upwashColors.backgroundColor
               ),
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -52,7 +57,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   SizedBox(
                     height: 250,
                     child: DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: BoxDecoration(color: upwashColors.backgroundColor),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -238,7 +243,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   Builder(builder: (context) => // Ensure Scaffold is in context
                   IconButton(
                       icon: Icon(Icons.menu,
-                      color: Colors.black,),
+                      color: upwashColors.textColor,),
                       onPressed: () => Scaffold.of(context).openDrawer()
                   )),
                   SizedBox(width: 19),
@@ -252,7 +257,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               Container(
                 height: 255,
                 decoration: BoxDecoration(
-                  color: Color(0xffFF6600),
+                  color: upwashColors.primaryOrange,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
@@ -404,6 +409,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       ),
                     ),
                     hintText: "1235 6589 1254 2365",
+                    hintStyle: TextStyle(color: Colors.black),
                     suffixIcon: ImageIcon(
                       AssetImage(A.visaLogo),
                       color: null,
@@ -442,6 +448,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                         ),
                         hintText: "MM/YY",
+                        hintStyle: TextStyle(color: Colors.black)
                       ),
                         inputFormatters: [maskFormatterExpdate]
                     ),
@@ -461,6 +468,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                         ),
                         hintText: "CVC",
+                        hintStyle: TextStyle(color: Colors.black)
                       ),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(3),
